@@ -1,0 +1,29 @@
+!01.FiltroProjecao = 
+// Use esse filtro no visual que será usado para fazer a projeção
+// Arraste para o visual e selecione "é" igual a 1
+// Captura a data de hoje para servir de ponto de referência.
+VAR _Hoje = TODAY()
+
+// Multiplicamos o ano por 4 (pois cada ano tem 4 trimestres) e somamos o trimestre atual.
+// Exemplo: (2025 * 4) + 4 = 8104. Isso gera um número sequencial único na história.
+VAR _ID_Atual = (YEAR(_Hoje) * 4) + QUARTER(_Hoje)
+
+// Captura o Ano que o Power BI está processando no eixo do gráfico ou tabela.
+VAR _AnoContexto = MAX(dCalendario[Ano]) 
+
+// Captura o número do Trimestre (1, 2, 3 ou 4) que o Power BI está processando.
+VAR _TrimContexto = MAX(dCalendario[Trimestre]) 
+
+// Aplica a mesma fórmula matemática acima para o trimestre que está sendo "desenhado".
+// Isso permite comparar o "trimestre do gráfico" com o "trimestre de hoje" usando números.
+VAR _ID_Contexto = (_AnoContexto * 4) + _TrimContexto
+
+RETURN
+IF(
+    // Verifica se o ID do gráfico é IGUAL ao ID atual (Trimestre Presente)
+    // OU se é o ID atual + 1 (Próximo Trimestre/Futuro).
+    _ID_Contexto = _ID_Atual || _ID_Contexto = _ID_Atual + 1,
+    
+    1, -- Se for um dos dois, retorna 1 (Verdadeiro/Ativo)
+    0  -- Se for qualquer outro trimestre (passado ou futuro distante), retorna 0 (Falso/Inativo)
+)
