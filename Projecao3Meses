@@ -1,8 +1,5 @@
-// A medida abaixo faz a projeção dos valores com base no passado
-// Você pode alterar os meses para ampliar ou reduzir o período que é usado como base para retornar os valores futuros
-
-
 #03.ProjecaoComTendencia3Meses = 
+// Arraste a medida para o visual no Eixo Y após a medida que retorna o que foi realizado no ultimo período
 // Armazena a data atual do sistema (útil para o Power BI saber onde o "hoje" está).
 VAR _Hoje = TODAY()
 
