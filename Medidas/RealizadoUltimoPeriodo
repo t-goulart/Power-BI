@@ -1,0 +1,21 @@
+#06.RealizadoUltimoPeriodo = 
+// Lembra que esta medida trabalha em conjunto com o filtro de visual 
+// para garantir que a escala do gráfico esteja correta.
+
+// VAR _FimMesAtual:
+// Utiliza a função TODAY() para saber a data de hoje.
+// A função EOMONTH (End Of Month) com o argumento '0' retorna o 
+// ÚLTIMO DIA do mês atual (ex: 31/12/2025).
+VAR _FimMesAtual = EOMONTH(TODAY(), 0)
+
+RETURN
+    // CALCULATE: Modifica o contexto de filtro da sua medida base.
+    CALCULATE(
+        // [#00.Valores]: É a sua medida principal de soma (Ex: SUM(fMovimentacoes[Total])).
+        [#00.Valores],
+        
+        // KEEPFILTERS: Esta função é crucial aqui. Ela respeita os filtros que 
+        // já existem no gráfico (como o mês selecionado no eixo X) e 
+        // ADICIONA a condição de que a data deve ser menor ou igual ao fim do mês atual.
+        KEEPFILTERS(dCalendario[Data] <= _FimMesAtual)
+    )
