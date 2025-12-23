@@ -1,0 +1,54 @@
+// A medida abaixo faz a projeção dos valores com base no passado
+// Você pode alterar os meses para ampliar ou reduzir o período que é usado como base para retornar os valores futuros
+
+
+#03.ProjecaoComTendencia3Meses = 
+// Armazena a data atual do sistema (útil para o Power BI saber onde o "hoje" está).
+VAR _Hoje = TODAY()
+
+// Calcula o último dia do mês atual (Ex: se hoje é 23/12, retorna 31/12/2025).
+VAR _FimMesAtual = EOMONTH(_Hoje, 0)
+
+// Define o limite da projeção: o último dia daqui a 3 meses (Ex: 31/03/2026).
+// Altere essa data para alterar até que mês vai gerar a projeção (Hoje mais quantos meses?)
+VAR _FimProjecao = EOMONTH(_Hoje, 3)
+
+VAR _MediaBase = 
+    CALCULATE(
+        // AVERAGEX percorre a lista de meses calculando a média da sua medida base.
+        AVERAGEX(VALUES(dCalendario[Mês Ano]), [#00.Valores]),
+        
+        // DATESINPERIOD olha para trás: do fim do mês atual, retrocede 3 meses.
+        // Altere a quantidade de meses aqui para olhar para o passado
+        DATESINPERIOD(dCalendario[Data], _FimMesAtual, -3, MONTH) 
+    )
+
+// Captura o valor que você selecionou no Slicer (Segmentação). Se nada for selecionado, usa 0.
+VAR _ValorParametro = SELECTEDVALUE('Projeção'[Projeção], 0)
+
+// Transforma o número inteiro (ex: 5) em um multiplicador decimal (ex: 1,05).
+// Se o parâmetro for 0, o fator é 1 (não altera o valor).
+VAR _FatorTendencia = (100 + _ValorParametro) / 100
+
+// Captura qual mês está sendo "desenhado" no eixo X do gráfico no momento.
+VAR _MesContexto = MAX(dCalendario[Data])
+
+// Define o primeiro dia do mês atual para garantir que a projeção comece agora.
+VAR _InicioMesAtual = DATE(YEAR(_Hoje), MONTH(_Hoje), 1)
+
+RETURN
+    // REGRA 1: Só mostra valores se o mês no gráfico estiver entre o mês atual e o limite de 3 meses.
+    IF(
+        _MesContexto >= _InicioMesAtual && _MesContexto <= _FimProjecao,
+        
+        // REGRA 2: Se o mês for o ATUAL (Dezembro)...
+        IF(
+            _MesContexto <= _FimMesAtual,
+            [#00.Valores], -- Retorna o valor REAL. Isso cria a "ponte" para a linha não quebrar.
+            
+            -- Se for um mês FUTURO (Janeiro, Fevereiro...):
+            // Aplica a fórmula de juros compostos: Média * (Fator ^ Distância de Meses).
+            // DATEDIFF conta quantos meses o futuro está distante de dezembro.
+            _MediaBase * POWER(_FatorTendencia, DATEDIFF(_FimMesAtual, _MesContexto, MONTH))
+        )
+    )
