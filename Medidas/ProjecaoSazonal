@@ -1,0 +1,32 @@
+#01.ProjecaoSazonal = 
+// Define o limite inferior da projeção: o último dia do mês atual (ex: 31/12/2025).
+VAR _FimMesAtual = EOMONTH(TODAY(), 0)
+
+// Define o limite superior da projeção: o último dia daqui a 3 meses (ex: 31/03/2026).
+VAR _FimProjecao = EOMONTH(TODAY(), 3)
+
+-- VALOR HISTÓRICO (SAZONALIDADE)
+VAR _MesAnoAnterior = 
+    CALCULATE(
+        // Utiliza sua medida base de valores.
+        [#00.Valores],
+        
+        // A função SAMEPERIODLASTYEAR desloca o filtro de data 1 ano para trás.
+        // Se o gráfico está desenhando Janeiro/2026, esta função busca os dados de Janeiro/2025.
+        SAMEPERIODLASTYEAR(dCalendario[Data])
+    )
+
+RETURN
+    IF(
+        // Condição A: A data no gráfico deve ser MAIOR que o fim do mês atual (apenas meses futuros).
+        MAX(dCalendario[Data]) > _FimMesAtual 
+        && 
+        // Condição B: A data no gráfico deve ser MENOR ou IGUAL ao limite de 3 meses.
+        MAX(dCalendario[Data]) <= _FimProjecao,
+        
+        // Se estiver dentro da janela futura de 3 meses, retorna o valor do ano passado.
+        _MesAnoAnterior,
+        
+        // Caso contrário (mês passado ou futuro distante), retorna vazio.
+        BLANK()
+    )
