@@ -7,7 +7,7 @@ Repositório dedicado a compartilhar medidas criadas com DAX do Power BI
 2. Projeção com Tendência
 3. Relizado no Ultimo Período
 #### Funções
-1. Filtro para Projecao
+1. Filtro para Projeção
 
 
 
