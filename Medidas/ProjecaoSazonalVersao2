@@ -1,0 +1,59 @@
+#02.ProjecaoSazonalVersao2 = 
+// Essa versão usa outra forma de criar a mesma medida Sazonal, porém pode usar em um card e em um gráfico
+// Define as datas de referência baseadas no dia de hoje
+VAR _Hoje = TODAY()
+VAR _FimMesAtual = EOMONTH(_Hoje, 0) // Ex: 31/12/2025
+VAR _FimProjecao = EOMONTH(_Hoje, 3) // Ex: 31/03/2026 (Limite de 3 meses à frente)
+
+-- 1. PARÂMETRO DE TENDÊNCIA
+// Captura o valor do Slicer de projeção. Se não selecionado, assume 0 (sem variação).
+VAR _ValorParametro = SELECTEDVALUE('Projeção'[Projeção], 0)
+// Converte a porcentagem em fator multiplicador (Ex: 10% vira 1,10).
+VAR _Fator = (100 + _ValorParametro) / 100
+
+-- 2. LÓGICA PARA O GRÁFICO (Contexto de Linha/Mês)
+// Captura qual mês o gráfico está tentando desenhar no eixo X.
+VAR _MesContexto = MAX(dCalendario[Data])
+
+// Busca o valor histórico exato do mesmo mês no ano anterior (SAMEPERIODLASTYEAR).
+VAR _ValorSazonalAnoPassado = 
+    CALCULATE(
+        [#00.Valores],
+        SAMEPERIODLASTYEAR(dCalendario[Data])
+    )
+
+// Calcula quantos meses o mês do gráfico está distante de hoje para aplicar o juros composto.
+VAR _DistanciaMeses = DATEDIFF(_FimMesAtual, _MesContexto, MONTH)
+
+// Aplica a tendência (Fator elevado ao número de meses à frente) sobre o valor do ano passado.
+VAR _ProjetadoSazonalGrafico = _ValorSazonalAnoPassado * POWER(_Fator, _DistanciaMeses)
+
+-- 3. LÓGICA PARA O CARD (Cálculo individual para soma total)
+// Como o Card não tem "eixo X", calculamos manualmente os 3 meses futuros:
+
+// Mês +1: Pega o valor do ano passado correspondente ao próximo mês e aplica o fator.
+VAR _Mes1 = CALCULATE([#00.Valores], SAMEPERIODLASTYEAR(DATESINPERIOD(dCalendario[Data], EDATE(_FimMesAtual, 1), -1, MONTH))) * POWER(_Fator, 1)
+
+// Mês +2: Pega o valor de 2 meses à frente no ano passado e aplica o fator acumulado.
+VAR _Mes2 = CALCULATE([#00.Valores], SAMEPERIODLASTYEAR(DATESINPERIOD(dCalendario[Data], EDATE(_FimMesAtual, 2), -1, MONTH))) * POWER(_Fator, 2)
+
+// Mês +3: Pega o valor de 3 meses à frente no ano passado e aplica o fator acumulado.
+VAR _Mes3 = CALCULATE([#00.Valores], SAMEPERIODLASTYEAR(DATESINPERIOD(dCalendario[Data], EDATE(_FimMesAtual, 3), -1, MONTH))) * POWER(_Fator, 3)
+
+RETURN
+IF(
+    // Verifica se a medida está dentro de um gráfico (possuindo a coluna Mês Ano no contexto).
+    ISINSCOPE(dCalendario[Mês Ano]),
+    
+    -- RETORNO PARA O GRÁFICO:
+    IF(
+        // Só exibe o valor se for um mês FUTURO (maior que dezembro) e dentro do limite de 3 meses.
+        _MesContexto > _FimMesAtual && _MesContexto <= _FimProjecao,
+        _ProjetadoSazonalGrafico,
+        BLANK() // Se for o mês atual (dezembro) ou meses passados, retorna vazio (esconde a barra azul).
+    ),
+    
+    -- RETORNO PARA O CARD:
+    // Soma apenas os resultados projetados de Jan + Fev + Mar.
+    _Mes1 + _Mes2 + _Mes3
+)
