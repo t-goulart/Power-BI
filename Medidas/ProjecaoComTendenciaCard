@@ -1,0 +1,40 @@
+#04.ProjecaoComTendenciaCard = 
+// Use essa medida no CARD para retornar o total da projeção com tendência
+// Armazena a data de hoje para definir o ponto de partida.
+VAR _Hoje = TODAY()
+
+// Localiza o último dia do mês corrente para saber quando a projeção deve começar.
+VAR _FimMesAtual = EOMONTH(_Hoje, 0)
+
+-- 1. DEFINIÇÃO DO VALOR BASE (Média Histórica)
+VAR _MediaBase = 
+    CALCULATE(
+        // Calcula a média dos valores mensais.
+        AVERAGEX(VALUES(dCalendario[Mês Ano]), [#00.Valores]),
+        
+        // Filtra os últimos 3 meses em relação ao fechamento do mês atual.
+        DATESINPERIOD(dCalendario[Data], _FimMesAtual, -3, MONTH)
+    )
+
+// Captura a porcentagem escolhida no seu Slicer de Projeção. Padrão é 0.
+VAR _ValorParametro = SELECTEDVALUE('Projeção'[Projeção], 0)
+
+// Converte o valor do parâmetro em um fator multiplicador (ex: 5 vira 1,05).
+VAR _Fator = (100 + _ValorParametro) / 100
+
+-- 2. CÁLCULOS INDIVIDUAIS (Mês a Mês)
+// Como o Card não percorre os meses automaticamente, calculamos cada um isoladamente:
+
+// Mês 1: Aplica a tendência uma vez sobre a média.
+VAR _Mes1 = _MediaBase * POWER(_Fator, 1)
+
+// Mês 2: Aplica a tendência acumulada (Média * Fator * Fator).
+VAR _Mes2 = _MediaBase * POWER(_Fator, 2)
+
+// Mês 3: Aplica a tendência acumulada por três meses.
+VAR _Mes3 = _MediaBase * POWER(_Fator, 3)
+
+-- 3. RESULTADO CONSOLIDADO
+RETURN
+    // Soma os resultados individuais para exibir o "Total Previsto" para o próximo trimestre.
+    _Mes1 + _Mes2 + _Mes3
