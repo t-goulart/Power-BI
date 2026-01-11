@@ -14,7 +14,7 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Li
 **Diferenciais Técnicos:**
 * **ETL Dinâmico:** Código em M que identifica e expande novas colunas automaticamente.
 * **UX/UI:** Design focado em usabilidade com navegação por menus e filtros inteligentes.
-* **Link para o Dashboard:** [Acesse a versão interativa aqui]([https://link-do-seu-google-sites-ou-web-publish](https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9))
+* **Link para o Dashboard:** [Acesse a versão interativa aqui](https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9)
 
 ---
 
