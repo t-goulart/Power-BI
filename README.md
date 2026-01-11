@@ -7,8 +7,6 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Li
 ## 🏆 Projeto em Destaque: Dashboard Financeiro Autoadaptável
 *Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
 
-
-
 <p align="center">
   <img src="Imagens/Painel-de-Performance-Financeira.gif" alt="Painel de Performance Financeira">
 </p>
@@ -16,7 +14,7 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Li
 **Diferenciais Técnicos:**
 * **ETL Dinâmico:** Código em M que identifica e expande novas colunas automaticamente.
 * **UX/UI:** Design focado em usabilidade com navegação por menus e filtros inteligentes.
-* **Link para o Dashboard:** [Acesse a versão interativa aqui](https://link-do-seu-google-sites-ou-web-publish)
+* **Link para o Dashboard:** [Acesse a versão interativa aqui]([https://link-do-seu-google-sites-ou-web-publish](https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9))
 
 ---
 
