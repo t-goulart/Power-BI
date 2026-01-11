@@ -8,7 +8,9 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Li
 *Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
 
 <p align="center">
-  <img src="Imagens/Painel-de-Performance-Financeira.gif" alt="Painel de Performance Financeira">
+  <video src="https://github.com/user-attachments/assets/36cd1130-aa49-4e65-9802-b6a5689e6958" width="100%" autoplay loop muted playsinline>
+    Seu navegador não suporta a tag de vídeo.
+  </video>
 </p>
 
 **Diferenciais Técnicos:**
