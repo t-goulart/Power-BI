@@ -1,29 +1,43 @@
-# Power BI - DAX
-Repositório dedicado a compartilhar medidas criadas com DAX do Power BI 
+# 📊 Power BI Portfolio - Business Intelligence & Analytics
 
-## Conteúdo das pastas
-#### Medidas
-1. Projeção Sazonal
-2. Projeção com Tendência
-3. Relizado no Ultimo Período
-#### Funções
-1. Filtro para Projeção
+Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Linguagem M avançada**, **DAX performático** e **Storytelling de dados** para suporte à tomada de decisão.
 
+---
 
+## 🏆 Projeto em Destaque: Dashboard Financeiro Autoadaptável
+*Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
 
-## Instruções para utilização das medidas
+![GIF ou Imagem do Dashboard](https://link-da-sua-imagem.png)
 
-As medidas já estão disponíveis separadamente.
-1. As medidas  são voltados para o Power BI, portanto não funcionam em outras ferramentas.
-2. Sempre cole a medida na integra, para evitar erros de digitação. Cuidado com os comentários adicionais.
-3. Acoselho a não renomear variáveis, pois será necessário revisar toda a medida e caso ñ o faça, podem ocorrer erros que possam prejudicar seus dados.
-4. Não apague os comentários para que outros possam ter alguma base de como a medida funciona.
-5. Não esqueça de manter a identação e organização das medidas.
+**Diferenciais Técnicos:**
+* **ETL Dinâmico:** Código em M que identifica e expande novas colunas automaticamente.
+* **UX/UI:** Design focado em usabilidade com navegação por menus e filtros inteligentes.
+* **Link para o Dashboard:** [Acesse a versão interativa aqui](https://link-do-seu-google-sites-ou-web-publish)
 
-Todos as medidas contidos neste repositórios são gratuitos e de uso livre, apenas solicito que referencie esse repositório.
+---
 
+## 📂 Organização do Repositório
 
+O conteúdo está estruturado para facilitar o reaproveitamento de componentes:
 
-## Requisitos do sistema
+### 🔹 [Medidas DAX](https://github.com/t-goulart/Power-BI/tree/main/Medidas)
+Biblioteca de fórmulas complexas:
+* **Projeções:** Sazonalidade e Tendência.
+* **Time Intelligence:** Comparativos de períodos (YoY, MoM).
 
-Não tem requisitos obrigatórios para aplicação das medidas, foram pensadas para funcionar na versão desktop e server.
+### 🔹 [Projetos/Autoadaptavel](https://github.com/t-goulart/Power-BI/tree/main/Projetos/Autoadaptavel)
+Arquitetura de dados resiliente focada em grandes volumes de arquivos com fontes variáveis.
+
+### 🔹 [Filtros](https://github.com/t-goulart/Power-BI/tree/main/Filtros)
+Lógicas de segmentação dinâmica para melhorar a experiência do usuário final.
+
+---
+
+## 🛠️ Stack Tecnológica
+* **Power BI:** Desktop & Service.
+* **Linguagem M:** Tratamento de dados complexos e dinâmicos.
+* **DAX:** Modelagem Star Schema e medidas de inteligência de tempo.
+* **Integração:** SQL, Excel, Python e SharePoint.
+
+---
+**Desenvolvido por [Tiago Almeida Goulart](https://www.linkedin.com/in/tiago-agoulart)**
