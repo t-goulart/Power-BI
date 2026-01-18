@@ -1,6 +1,6 @@
 # 📊 Power BI Portfolio - Business Intelligence & Analytics
 
-Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Linguagem M avançada**, **DAX performático** e **Storytelling de dados** para suporte à tomada de decisão.
+Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Engenharia de Dados (M)**, **Modelagem Performática** e **Storytelling** para suporte à tomada de decisão.
 
 ---
 
@@ -13,34 +13,45 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Li
   </video>
 </p>
 
-**Diferenciais Técnicos:**
+**🚀 Diferenciais Técnicos:**
 * **ETL Dinâmico:** Código em M que identifica e expande novas colunas automaticamente.
 * **UX/UI:** Design focado em usabilidade com navegação por menus e filtros inteligentes.
-* **Link para o Dashboard:** [Acesse a versão interativa aqui](https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9)
+* **Link Interativo:** [Acesse o Dashboard aqui](https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9)
+
+---
+
+## 🧠 Guia de Arquitetura e Melhores Práticas
+*Este repositório não é apenas um portfólio visual, mas um guia de implementação técnica. Abaixo, as premissas de performance utilizadas:*
+
+### 📌 Índice de Navegação Técnica
+1. [Otimização de Chaves (IDs)](#-otimização-de-chaves-ids)
+2. [Preservação do Query Folding](#-preservação-do-query-folding)
+3. [Enriquecimento de Dados (NestedJoin vs. LOOKUPVALUE)](#-enriquecimento-de-dados)
+4. [🆘 Guia de Troubleshooting (Solução de Problemas)](./TROUBLESHOOTING.md)
+
+### 🔹 Otimização de Chaves (IDs)
+Uso de **Int64 (Inteiro)** em chaves de relacionamento para maximizar a compressão do motor **VertiPaq** e reduzir o consumo de memória RAM.
+
+### 🔹 Preservação do Query Folding
+Garantia de que as transformações pesadas sejam processadas na fonte (SQL/DB), evitando o tráfego desnecessário de linhas brutas.
+
+### 🔹 Enriquecimento de Dados
+Substituição de `LOOKUPVALUE` e colunas calculadas por **Table.NestedJoin**. Isso garante integridade (evita erros de MAX/MIN) e melhora drasticamente a performance do modelo.
 
 ---
 
 ## 📂 Organização do Repositório
 
-O conteúdo está estruturado para facilitar o reaproveitamento de componentes:
-
-### 🔹 [Medidas DAX](https://github.com/t-goulart/Power-BI/tree/main/Medidas)
-Biblioteca de fórmulas complexas:
-* **Projeções:** Sazonalidade e Tendência.
-* **Time Intelligence:** Comparativos de períodos (YoY, MoM).
-
-### 🔹 [Projetos/Autoadaptavel](https://github.com/t-goulart/Power-BI/tree/main/Projetos/Autoadaptavel)
-Arquitetura de dados resiliente focada em grandes volumes de arquivos com fontes variáveis.
-
-### 🔹 [Filtros](https://github.com/t-goulart/Power-BI/tree/main/Filtros)
-Lógicas de segmentação dinâmica para melhorar a experiência do usuário final.
+* **[Medidas DAX](./Medidas):** Biblioteca de fórmulas (Time Intelligence e Projeções).
+* **[Projetos/Autoadaptavel](./Projetos/Autoadaptavel):** Arquitetura resiliente a mudanças de fonte.
+* **[Filtros](./Filtros):** Lógicas de segmentação dinâmica.
 
 ---
 
 ## 🛠️ Stack Tecnológica
 * **Power BI:** Desktop & Service.
-* **Linguagem M:** Tratamento de dados complexos e dinâmicos.
-* **DAX:** Modelagem Star Schema e medidas de inteligência de tempo.
+* **Linguagem M:** ETL avançado e dinâmico.
+* **DAX:** Star Schema e medidas complexas.
 * **Integração:** SQL, Excel, Python e SharePoint.
 
 ---
