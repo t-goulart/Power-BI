@@ -54,6 +54,7 @@ Sempre que possível, realize o enriquecimento dos dados no ETL usando `Table.Ne
 * **Causa:** Frequentemente causado por tipos de dados inadequados (Chaves como Texto) ou quebra do **Query Folding**.
 * **Solução:** Verifique se as chaves de relacionamento são do tipo **Int64.Type** (Inteiro) e evite transformações que impeçam o banco de dados de processar a consulta nativamente.
 
+---
 
 ## 🎨 5. Design e Experiência do Usuário (UX)
 A interface é o "contrato" final entre o dado processado e o tomador de decisão. Um design ineficiente quebra a confiança no dado.
