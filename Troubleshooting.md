@@ -54,5 +54,17 @@ Sempre que possível, realize o enriquecimento dos dados no ETL usando `Table.Ne
 * **Causa:** Frequentemente causado por tipos de dados inadequados (Chaves como Texto) ou quebra do **Query Folding**.
 * **Solução:** Verifique se as chaves de relacionamento são do tipo **Int64.Type** (Inteiro) e evite transformações que impeçam o banco de dados de processar a consulta nativamente.
 
+
+## 🎨 5. Design e Experiência do Usuário (UX)
+A interface é o "contrato" final entre o dado processado e o tomador de decisão. Um design ineficiente quebra a confiança no dado.
+
+* **Carga Cognitiva:** Evite o "efeito cena no escuro" — excesso de cores escuras e baixo contraste frustram o usuário e impedem a rápida absorção dos insights.
+* **Acessibilidade e Contraste:** Mantenha alto contraste entre o fundo e os rótulos de dados. O uso estratégico do cinza permite que as cores de destaque (vermelho/verde) cumpram seu papel sem poluir o visual.
+* **Semântica das Cores:** A cor deve comunicar, não decorar. Utilize o vermelho para atenção/desvios e o verde para metas, mantendo a consistência em todo o projeto.
+
+### 📚 Leituras Recomendadas para Storytelling:
+* **Storytelling com Dados** (Cole Nussbaumer Knaflic): Foco em eliminar a desordem visual.
+* **Show Me the Numbers** (Stephen Few): A ciência por trás da percepção visual e gráficos.
+
 ---
 **Documentação mantida por [Tiago Almeida Goulart](https://www.linkedin.com/in/tiago-agoulart)**
