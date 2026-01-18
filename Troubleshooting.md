@@ -28,22 +28,31 @@ Frequentemente ocorre ao tentar combinar dados de fontes diferentes (ex: SQL + E
 
 * **Sintoma:** "Information is needed regarding data privacy".
 * **Solução:** 1. Vá em **Arquivo** > **Opções e Configurações** > **Configurações da Fonte de Dados**.
-  2. Clique em **Editar Permissões** e defina o Nível de Privacidade para **Organizacional** ou **Público** (conforme a política da empresa).
-  3. Em casos de desenvolvimento isolado, você pode marcar "Ignorar os Níveis de Privacidade" em **Opções** > **Privacidade**, mas tenha cautela com o envio de dados sensíveis para fontes externas.
+  2. Clique em **Editar Permissões** e defina o Nível de Privacidade para **Organizacional** ou **Público**.
+  3. Em casos de desenvolvimento isolado, você pode marcar "Ignorar os Níveis de Privacidade" em **Opções** > **Privacidade**, mas tenha cautela com a segurança dos dados.
 
 ---
 
-## ⚡ 3. Lentidão na Visualização (Preview) do Power Query
-O Power Query tenta carregar as primeiras 1000 linhas por padrão. Se a fonte for lenta, o desenvolvimento trava.
+## ⚡ 3. Lentidão na Visualização e Processamento (Enriquecimento de Dados)
+Muitos problemas de performance surgem ao tentar "cruzar" tabelas de forma ineficiente.
 
-* **Solução:** * Utilize a função `Table.FirstN(fonte, 10)` logo após a etapa de navegação para trabalhar com uma amostra reduzida durante a criação das transformações.
-  * Remova a etapa de `Table.FirstN` apenas antes de publicar.
+### Problema: Uso excessivo de DAX para buscas (LOOKUPVALUE/CALCULATE)
+O uso de `LOOKUPVALUE` ou `CALCULATE` com `MAX/MIN` para buscar dados de outras tabelas cria colunas calculadas que não comprimem bem e aumentam o consumo de memória RAM. Além disso, funções de agregação podem mascarar duplicidades nos dados.
+
+### Solução: Table.NestedJoin no Power Query
+Sempre que possível, realize o enriquecimento dos dados no ETL usando `Table.NestedJoin`.
+* **Vantagem:** O motor **VertiPaq** comprime o resultado final, reduzindo o tamanho do arquivo.
+* **Integridade:** Permite identificar duplicidades (expansão de linhas) ainda na fase de tratamento.
+* **Atenção:** A ordem das colunas nas chaves de comparação `{ }` deve ser idêntica em ambas as tabelas para evitar valores nulos.
+
+### Preview Lento no Power Query
+* Utilize `Table.FirstN(fonte, 10)` logo após a navegação para trabalhar com uma amostra durante o desenvolvimento, removendo a etapa antes da publicação.
 
 ---
 
 ## 🔄 4. Erros de Memória ou Timeout na Atualização
-* **Causa:** Frequentemente causado por tipos de dados inadequados (Chaves como Texto) ou falta de Query Folding.
-* **Solução:** Verifique se as chaves de relacionamento são do tipo **Int64.Type** e se não há etapas no Power Query que impeçam o banco de dados de processar a consulta (Folding).
+* **Causa:** Frequentemente causado por tipos de dados inadequados (Chaves como Texto) ou quebra do **Query Folding**.
+* **Solução:** Verifique se as chaves de relacionamento são do tipo **Int64.Type** (Inteiro) e evite transformações que impeçam o banco de dados de processar a consulta nativamente.
 
 ---
 **Documentação mantida por [Tiago Almeida Goulart](https://www.linkedin.com/in/tiago-agoulart)**
