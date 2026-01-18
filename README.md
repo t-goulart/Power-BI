@@ -27,7 +27,7 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **En
 1. [Otimização de Chaves (IDs)](#-otimização-de-chaves-ids)
 2. [Preservação do Query Folding](#-preservação-do-query-folding)
 3. [Enriquecimento de Dados (NestedJoin vs. LOOKUPVALUE)](#-enriquecimento-de-dados)
-4. [🆘 Guia de Troubleshooting (Solução de Problemas)](./TROUBLESHOOTING.md)
+4. [🆘 Guia de Troubleshooting (Solução de Problemas)](./Troubleshooting.md)
 
 ### 🔹 Otimização de Chaves (IDs)
 Uso de **Int64 (Inteiro)** em chaves de relacionamento para maximizar a compressão do motor **VertiPaq** e reduzir o consumo de memória RAM.
