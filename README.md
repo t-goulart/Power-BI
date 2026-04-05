@@ -39,13 +39,13 @@ Garantia de que as transformações pesadas sejam processadas na fonte (SQL/DB),
 Substituição de `LOOKUPVALUE` e colunas calculadas por **Table.NestedJoin**. Isso garante integridade (evita erros de MAX/MIN) e melhora drasticamente a performance do modelo.
 
 ## ⛓️ Relacionamentos e Fluxo de Filtro
-A integridade do modelo depende de um fluxo de filtro previsível.
+↔️ A integridade do modelo depende de um fluxo de filtro previsível.
 
 * **Direção Única vs. Ambos:** Evite o uso de "Direção do filtro cruzado: Ambos" em relacionamentos 1:*. 
 * **Riscos:** Filtros bi-direcionais podem causar propagação indesejada da tabela Fato para a Dimensão, gerando resultados incorretos em medidas e ambiguidade no esquema.
 * **Solução:** Utilize a função DAX `CROSSFILTER` para habilitar a bi-direcionalidade apenas em medidas específicas, preservando a performance e a segurança do modelo global.
 
-⛓️ O Perigo do Relacionamento Muitos para Muitos (*:*)
+💣 O Perigo do Relacionamento Muitos para Muitos (*:*)
 Relacionamentos Muitos para Muitos introduzem ambiguidade e riscos de integridade.
 
 * **Impacto Técnico:** Filtros ineficientes, métricas duplicadas e perda de performance no Motor VertiPaq.
