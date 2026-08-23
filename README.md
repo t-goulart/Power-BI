@@ -1,3 +1,5 @@
+adapte para o meu readme
+
 # 📊 Power BI Portfolio - Business Intelligence & Analytics
 
 Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **Engenharia de Dados (M)**, **Modelagem Performática** e **Storytelling** para suporte à tomada de decisão.
@@ -8,9 +10,9 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **En
 *Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/36cd1130-aa49-4e65-9802-b6a5689e6958" width="100%" autoplay loop muted playsinline>
-    Seu navegador não suporta a tag de vídeo.
-  </video>
+  <video src="https://github.com/user-attachments/assets/36cd1130-aa49-4e65-9802-b6a5689e6958" width="100%" autoplay loop muted playsinline>
+    Seu navegador não suporta a tag de vídeo.
+  </video>
 </p>
 
 **🚀 Diferenciais Técnicos:**
@@ -41,7 +43,7 @@ Substituição de `LOOKUPVALUE` e colunas calculadas por **Table.NestedJoin**. I
 ## ⛓️ Relacionamentos e Fluxo de Filtro
 ↔️ A integridade do modelo depende de um fluxo de filtro previsível.
 
-* **Direção Única vs. Ambos:** Evite o uso de "Direção do filtro cruzado: Ambos" em relacionamentos 1:*. 
+* **Direção Única vs. Ambos:** Evite o uso de "Direção do filtro cruzado: Ambos" em relacionamentos 1:*. 
 * **Riscos:** Filtros bi-direcionais podem causar propagação indesejada da tabela Fato para a Dimensão, gerando resultados incorretos em medidas e ambiguidade no esquema.
 * **Solução:** Utilize a função DAX `CROSSFILTER` para habilitar a bi-direcionalidade apenas em medidas específicas, preservando a performance e a segurança do modelo global.
 
@@ -50,9 +52,9 @@ Relacionamentos Muitos para Muitos introduzem ambiguidade e riscos de integridad
 
 * **Impacto Técnico:** Filtros ineficientes, métricas duplicadas e perda de performance no Motor VertiPaq.
 * **Alternativas Profissionais:**
-    * **Hierarquia de Fluxo:** Validar se a Dimensão (1) está corretamente posicionada acima da Fato (*).
-    * **Desnormalização:** Em cenários específicos, consolidar dados em uma tabela única para aproveitar a compressão colunar do VertiPaq.
-    * **Tabelas Ponte:** Criar tabelas intermediárias para normalizar a relação em 1:*.
+    * **Hierarquia de Fluxo:** Validar se a Dimensão (1) está corretamente posicionada acima da Fato (*).
+    * **Desnormalização:** Em cenários específicos, consolidar dados em uma tabela única para aproveitar a compressão colunar do VertiPaq.
+    * **Tabelas Ponte:** Criar tabelas intermediárias para normalizar a relação em 1:*.
 
 
 # Implementação de RLS Hierárquico com a Função PATH no Power BI
@@ -92,15 +94,15 @@ Com o caminho gerado, a pergunta *"O Bruno (1010) pode ver o Diego (1012)?"* é 
 Ao abrir o relatório, a função de segurança executa as seguintes etapas sequenciais:
 
 graph TD
-    A[Usuário abre o relatório] --> B[Obtém e-mail via USERPRINCIPALNAME]
-    B --> C{Está na tabela desconectada dRLS?}
-    C -- Sim --> D[Acesso Total Liberado TRUE]
-    C -- Não --> E{Possui cadastro ativo na tPessoas?}
-    E -- Não --> F[Acesso Negado FALSE - Painel em Branco]
-    E -- Sim --> G{Possui Lider = 'Sim'?}
-    G -- Não --> F
-    G -- Sim --> H[Aplica PATHCONTAINS na coluna RLS]
-    H --> I[Renderiza apenas a própria estrutura]
+    A[Usuário abre o relatório] --> B[Obtém e-mail via USERPRINCIPALNAME]
+    B --> C{Está na tabela desconectada dRLS?}
+    C -- Sim --> D[Acesso Total Liberado TRUE]
+    C -- Não --> E{Possui cadastro ativo na tPessoas?}
+    E -- Não --> F[Acesso Negado FALSE - Painel em Branco]
+    E -- Sim --> G{Possui Lider = 'Sim'?}
+    G -- Não --> F
+    G -- Sim --> H[Aplica PATHCONTAINS na coluna RLS]
+    H --> I[Renderiza apenas a própria estrutura]
 
 ---
 
