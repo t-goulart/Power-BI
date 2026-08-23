@@ -93,16 +93,28 @@ Com o caminho gerado, a pergunta *"O Bruno (1010) pode ver o Diego (1012)?"* é 
 
 Ao abrir o relatório, a função de segurança executa as seguintes etapas sequenciais:
 
+# 🛡️ Guia Operacional & Fluxo de Decisão do RLS
+
+Este documento detalha o funcionamento interno, a lógica de decisão e a governança da arquitetura de **Security (Row-Level Security - RLS)** implementada no modelo.
+
+---
+
+## 🔄 Fluxograma do Algoritmo de Acesso (Mermaid)
+
+O diagrama abaixo descreve o caminho exato executado pelo motor **VertiPaq** do Power BI a cada requisição de visualização no relatório:
+
+```mermaid
 graph TD
-    A[Usuário abre o relatório] --> B[Obtém e-mail via USERPRINCIPALNAME]
-    B --> C{Está na tabela desconectada dRLS?}
-    C -- Sim --> D[Acesso Total Liberado TRUE]
-    C -- Não --> E{Possui cadastro ativo na tPessoas?}
-    E -- Não --> F[Acesso Negado FALSE - Painel em Branco]
-    E -- Sim --> G{Possui Lider = 'Sim'?}
-    G -- Não --> F
-    G -- Sim --> H[Aplica PATHCONTAINS na coluna RLS]
-    H --> I[Renderiza apenas a própria estrutura]
+    A[Usuário abre o relatório] --> B[Obtém e-mail via USERPRINCIPALNAME]
+    B --> C{Está na tabela desconectada dRLS?}
+    C -- Sim --> D[Acesso Total Liberado TRUE]
+    C -- Não --> E{Possui cadastro ativo na tPessoas?}
+    E -- Não --> F[Acesso Negado FALSE - Painel em Branco]
+    E -- Sim --> G{Possui Lider = 'Sim'?}
+    G -- Não --> F
+    G -- Sim --> H[Aplica PATHCONTAINS na coluna RLS]
+    H --> I[Renderiza apenas a própria estrutura]
+```
 
 ---
 
