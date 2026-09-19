@@ -12,7 +12,7 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **En
 *Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/18555210-7ec7-4fd1-b2e0-ceccdc8d178e/>" width="100%" autoplay loop muted playsinline>
+  <video src="https://github.com/user-attachments/assets/18555210-7ec7-4fd1-b2e0-ceccdc8d178e" width="100%" autoplay loop muted playsinline>
     Seu navegador não suporta a tag de vídeo.
   </video>
 </p>
