@@ -6,7 +6,26 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **En
 
 ---
 
-## 🏆 Projeto em Destaque: Dashboard Financeiro Autoadaptável
+## 🏆 Projeto em Destaque: Dashboard Recursos Humanos com Hierarquia
+
+
+*Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/36cd1130-aa49-4e65-9802-b6a5689e6958" width="100%" autoplay loop muted playsinline>
+    Seu navegador não suporta a tag de vídeo.
+  </video>
+</p>
+
+**🚀 Diferenciais Técnicos:**
+* **Hierarquia:** Medidas que criadas para filtrar os dados de acordo com a liderança direta e indireta.
+* **ETL Dinâmico:** Código em M que identifica e expande novas colunas automaticamente.
+* **UX/UI:** Design focado em comunicação e destaque dos dados.
+* **Link Interativo:** [Acesse o Dashboard aqui](https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9)
+
+---
+
+## Dashboard Financeiro Autoadaptável
 *Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
 
 <p align="center">
