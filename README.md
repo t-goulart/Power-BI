@@ -21,7 +21,7 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **En
 * **Hierarquia:** Medidas que criadas para filtrar os dados de acordo com a liderança direta e indireta.
 * **ETL Dinâmico:** Código em M que identifica e expande novas colunas automaticamente.
 * **UX/UI:** Design focado em comunicação e destaque dos dados.
-* **Link Interativo:** [Acesse o Dashboard aqui](https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9)
+* **Link Interativo:** [Acesse o Dashboard aqui]([https://app.powerbi.com/view?r=eyJrIjoiNTZhZjEwNjgtOWVmNC00MWEyLWJhMDQtOTZhZDZjYjMzNTU1IiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9](https://app.powerbi.com/view?r=eyJrIjoiNGEzZjM5NjYtNTczYy00OTFlLWFiYWUtZjM3MjEwNzEwMDgzIiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9)
 
 ---
 
