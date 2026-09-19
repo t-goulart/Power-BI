@@ -9,18 +9,22 @@ Bem-vindo ao meu portfólio de Power BI. Aqui apresento soluções que unem **En
 ## 🏆 Projeto em Destaque: Dashboard Recursos Humanos com Hierarquia
 
 
-*Uma solução resiliente ao Schema Drift com ingestão dinâmica de dados.*
+*Uma solução voltada para a hierarquia dos dados.*
 
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/18555210-7ec7-4fd1-b2e0-ceccdc8d178e" width="100%" autoplay loop muted playsinline>
-    Seu navegador não suporta a tag de vídeo.
-  </video>
+  <a href="https://www.youtube.com/watch?v=g_TI6kHZfjY">
+    <img src="https://img.youtube.com/vi/g_TI6kHZfjY/maxresdefault.jpg" width="100%" alt="Demonstração do painel">
+  </a>
 </p>
 
 **🚀 Diferenciais Técnicos:**
-* **Hierarquia:** Medidas que criadas para filtrar os dados de acordo com a liderança direta e indireta.
-* **ETL Dinâmico:** Código em M que identifica e expande novas colunas automaticamente.
-* **UX/UI:** Design focado em comunicação e destaque dos dados.
+* **RLS dinâmico por hierarquia:** segurança em nível de linha aplicada via tabela de hierarquia organizacional + medida de filtro, para visualizar a estrutura de cada gestor, sem manutenção manual de roles por pessoa.
+* **Documentação embutida no próprio painel:** página "Métricas de Cálculo" (medida ?htmlComposicaoIndicadores, renderizada em HTML) explica cada indicador — para que serve, como o cálculo é aplicado e um exemplo — direto na interface, sem depender de documentação externa.
+* **Padrão de nomenclatura de medidas:** prefixos semânticos (# numérico, % percentual, ! filtro, - mensagem, @ texto dinâmico) tornam o modelo autoexplicativo e facilitam auditoria/manutenção em mais de 130 medidas DAX.
+* **UX orientada a navegação:** páginas segmentadas por tema (Visão Geral, Turnover, Motivos, Diversidade, Programas, Remuneração) com cartões vivos no topo, sempre respeitando os filtros ativos da tela.
+* **Indicadores de compliance:** acompanhamento automático de cota de PCD (Lei 8.213/91) e cota de aprendizagem (CLT art. 429), com metas internas e leitura por faixa de empresa.
+* **Análise de equidade salarial em duas camadas:** diferença bruta e diferença por nível hierárquico apresentadas lado a lado, evitando a leitura enganosa de um gap salarial isolado.
+* **Governança de dados:** colunas de PII (CPF, RG, data de nascimento) mapeadas e isoladas do consumo analítico, reduzindo exposição desnecessária no modelo publicado.
 * **Link Interativo:** [Acesse o Dashboard aqui](https://app.powerbi.com/view?r=eyJrIjoiNGEzZjM5NjYtNTczYy00OTFlLWFiYWUtZjM3MjEwNzEwMDgzIiwidCI6IjVlYzdjNDViLWQxYzgtNGIwNS1hMmVjLTJjYzE1OWI5ZDZiMiJ9)
 
 ---
